@@ -15,7 +15,7 @@ http://maven.apache.org/POM/4.0.0 http://maven.apache.org/maven-v4_0_0.xsd">
     <name>Product_Management</name>
     <description>Project for Spring Boot BSale</description>
     <properties>
-        <java.version>10</java.version>
+        <java.version>11</java.version>
         <spring-native.version>0.9.2</spring-native.version>
     </properties>
 
@@ -72,18 +72,14 @@ http://maven.apache.org/POM/4.0.0 http://maven.apache.org/maven-v4_0_0.xsd">
     <build>
         <plugins>
             <plugin>
-                <groupId>org.springframework.boot</groupId>
-                <artifactId>spring-boot-maven-plugin</artifactId>
+                <groupId>org.apache.maven.plugins</groupId>
+                <artifactId>maven-compiler-plugin</artifactId>
                 <configuration>
-                    <image>
-                        <builder>paketobuildpacks/builder:tiny</builder>
-                        <env>
-                            <BP_NATIVE_IMAGE>true</BP_NATIVE_IMAGE>
-                        </env>
-                    </image>
+                    <source>1.8</source>
+                    <target>1.8</target>
                 </configuration>
             </plugin>
-                <plugin>
+            <plugin>
                     <groupId>org.apache.maven.plugins</groupId>
                     <artifactId>maven-surefire-plugin</artifactId>
                     <version>3.0.0-M5</version>
@@ -91,7 +87,6 @@ http://maven.apache.org/POM/4.0.0 http://maven.apache.org/maven-v4_0_0.xsd">
                         <testFailureIgnore>true</testFailureIgnore>
                     </configuration>
                 </plugin>
-
             <plugin>
                 <groupId>org.springframework.experimental</groupId>
                 <artifactId>spring-aot-maven-plugin</artifactId>
